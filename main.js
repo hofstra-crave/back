@@ -35,6 +35,20 @@ router.get("/getRestaurant/:restaurantName", async (context, next) => {
   }
 })
 
+router.get("/getRestaurant/:id", async (context, next) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const response = await conn.query(`SELECT Restaurant FROM Restaurants WHERE RestaurantID = ${context.params.id}`)
+    const data = await response.json();
+    context.response.body = data;
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end()
+  }
+})
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
