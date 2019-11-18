@@ -20,6 +20,21 @@ let router = new Router();
 
 app.use(static_server('./public'));
 
+// Get Restaurant 
+router.get("/getRestaurant/:restaurantName", async (context, next) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const response = await conn.query(`SELECT Restaurant FROM Restaurants WHERE RestaurantName = ${context.params.restaurantName}`)
+    const data = await response.json();
+    context.response.body = data;
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end()
+  }
+})
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
