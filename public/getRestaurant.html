@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+  <!-- Load d3.js -->
+  <script src="https://d3js.org/d3.v4.js"></script>
+
+  <!-- Load d3-cloud -->
+  <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <h1 class="header"></h1>
+    <p class="description"></p>
+  </div>
+
+  <div class="container">
+
+    <div class="col-sm-6">
+      <div id="cloud"></div>
+      <h3>Overall Score</h3>
+      <h2 class="score"></h2>
+
+      <p>There are currently action items available for your restaurant. Restaurants similar to you have earned, on
+        average, a score of 88.</p>
+      <hr class="hidden-sm hidden-md hidden-lg">
+    </div>
+
+    <div class="col-sm-6">
+      <div class="star-rating">
+        <span class="heading">User Rating</span>
+      </div>
+
+      <div id="chartContainer"></div>
+      <hr style="border:3px solid #f1f1f1">
+    </div>
+
+  </div>
+  <script src="main.js"></script>
+
+</body>
+
+</html>

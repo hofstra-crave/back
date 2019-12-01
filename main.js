@@ -9,7 +9,8 @@ const pool = mariadb.createPool({
   host: process.env.HOST_NAME,
   user: process.env.USER_NAME,
   password: process.env.PASSWORD,
-  connectionLimit: 5
+  connectionLimit: 5,
+  database: 'Team Crave'
 });
 
 pool.getConnection().then(() => {
@@ -22,14 +23,14 @@ let router = new Router();
 app.use(static_server('./public'));
 
 // Get Restaurant
-router.get('/getRestaurant/:restaurantName', async (context, next) => {
+router.get('/getRestaurant/:id', async (context, next) => {
   let conn;
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT Restaurant FROM Restaurants WHERE RestaurantName = ${context.params.restaurantName}`
+      `SELECT * FROM Restaurants WHERE Name = "${context.params.id}" `
     );
-    const data = await response.json();
+    const data = await response[0];
     context.response.body = data;
   } catch (err) {
     throw err;
@@ -38,14 +39,14 @@ router.get('/getRestaurant/:restaurantName', async (context, next) => {
   }
 });
 
-router.get('/getRestaurant/:id', async (context, next) => {
+router.get('/getRatings/:id', async (context, next) => {
   let conn;
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT Restaurant FROM Restaurants WHERE RestaurantID = ${context.params.id}`
+      `SELECT * FROM Reviews WHERE Restaurant_ID = ${context.params.id}`
     );
-    const data = await response.json();
+    const data = await response;
     context.response.body = data;
   } catch (err) {
     throw err;
@@ -56,6 +57,10 @@ router.get('/getRestaurant/:id', async (context, next) => {
 
 app.use(router.routes());
 app.use(router.allowedMethods());
+
+// app.listen(3003, () => {
+//   console.log('Server running on port 3003');
+// });
 
 const httpServer = http.createServer(app.callback());
 

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Review Manager</title>
   <meta charset="utf-8">
@@ -7,53 +8,32 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-  <style>
-  img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  }
-  div.a {
-     Text-indent: 50px;
-  .fakeimg {
-    height: 200px;
-    background: #aaa;
-  }
-  </style>
 </head>
+
 <body>
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-  <h1><font color="blue">Review Manager</font></h1>
-  <p><font color="light blue">Get started now and find your restaurant!</font></p>
-</div>
-
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#" target="_blank">Home </a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="signup.html">Sign up</a></li>
-        <li><a href="review.html">Review</a></li>
-      </ul>
-    </div>
+  <div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>
+      <font color="blue">Review Manager</font>
+    </h1>
+    <p>
+      <font color="light blue">Get started now and find your restaurant!</font>
+    </p>
   </div>
-</nav>
-<div class="a">
-<h3> Everyone loves food! But food isn’t the only aspect of a restaurant experience. Predicting what each patron would like or how their experience can be best catered is a challenging task. If done poorly, could leave the patron with an inadequate experience; and you, with a scathing review. Can technology help? </h3>
 
-<div>
+  <div class="a">
+    <!-- <h3> Everyone loves food! But food isn’t the only aspect of a restaurant experience. Predicting what each patron
+      would like or how their experience can be best catered is a challenging task. If done poorly, could leave the
+      patron with an inadequate experience; and you, with a scathing review. Can technology help? </h3> -->
 
-<h3> We propose designing a co-vigilant system that will accurately detect, predict, and signal any adverse event in the restaurant’s social media outlook. Restaurateurs will then be vigilant in resolving any issues before they even occur! </h3> </div>
+    <div>
+      <form action="/getRestaurant.html" method="GET">
+        <input type="text" placeholder="Enter a restaurant name" name="restaurant"> <input type="submit">
+      </form>
+    </div>
 
-<img src="restaurant.jpg" alt="restaurant" align="middle" style="width:50%;">
+    <!-- <img src="restaurant.jpg" alt="restaurant" align="middle" style="width:50%;"> -->
 
 </body>
+
 </html>
