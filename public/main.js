@@ -13,6 +13,7 @@ let setUp = async () => {
   console.log(reviewResponse);
 
   var rating = avgRating(reviewResponse);
+  var roundedRating = rounding(rating);
   var graph = createGraph(reviewResponse, r);
   var count = 5;
 
@@ -23,12 +24,12 @@ let setUp = async () => {
   window.document.querySelector('.score').innerText = rating * 20 + ' / 100';
 
   //Display Star rating
-  while (rating > 0 || count > 0) {
-    if (rating > 1) {
+  while (roundedRating > 0 || count > 0) {
+    if (roundedRating > 1) {
       var span = document.createElement('SPAN');
       span.className = 'fa fa-star checked';
       document.querySelector('.star-rating').appendChild(span);
-    } else if (rating >= 0.5) {
+    } else if (roundedRating >= 0.5) {
       var span = document.createElement('SPAN');
       span.className = 'fa fa-star-half checked';
       document.querySelector('.star-rating').appendChild(span);
@@ -41,7 +42,7 @@ let setUp = async () => {
       span.className = 'fa fa-star';
       document.querySelector('.star-rating').appendChild(span);
     }
-    rating--;
+    roundedRating--;
     count--;
   }
 
@@ -68,7 +69,11 @@ function avgRating(x) {
     sum += y['Rating'];
   });
 
-  return Math.round((sum / x.length) * 2) / 2;
+  return Math.round((sum / x.length) * 100) / 100;
+}
+
+function rounding(num) {
+  return Math.round(num * 2) / 2;
 }
 
 function createGraph(reviews, resName) {
