@@ -92,12 +92,13 @@ function createGraph(reviews, resName) {
       text: resName
     },
     axisX: {
-      interval: 1
+      interval: 1,
+      title: 'Review Score (out of 5)'
     },
     axisY2: {
       interlacedColor: 'rgba(1,77,101,.2)',
       gridColor: 'rgba(1,77,101,.1)',
-      title: 'Frequency'
+      title: 'Review Frequency'
     },
     data: [
       {
