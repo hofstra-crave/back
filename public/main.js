@@ -8,12 +8,16 @@ let setUp = async () => {
   let rID = rData['ID'];
 
   //get reviews for the restaurant
-  let reviewData = await fetch(`/getRatings/${rID}`);
+  let reviewData = await fetch(`/getRatings/${rID}/pos`);
+  let reviewData2 = await fetch(`/getRatings/${rID}/neg`);
   let reviewResponse = await reviewData.json();
-  console.log(reviewResponse);
+  let reviewResponse2 = await reviewData2.json();
+
+  reviewResponse = reviewResponse.concat(reviewResponse2);
 
   var rating = avgRating(reviewResponse);
   var roundedRating = rounding(rating);
+
   var graph = createGraph(reviewResponse, r);
   var count = 5;
 
@@ -47,8 +51,41 @@ let setUp = async () => {
   }
 
   var frequency_list = tfidf(reviewResponse);
+  var frequency_list2 = tfidf(reviewResponse2);
 
-  createCloud(frequency_list);
+  createCloud(frequency_list, 'cloud1');
+  createCloud(frequency_list2, 'cloud2');
+
+  let simID = rData['SimilarID'];
+
+  let simRes = await fetch(`/getRestaurantByID/${simID}`);
+  let simRes2 = await simRes.json();
+  let simData = simRes2[0];
+
+  //get reviews for the restaurant
+  let simreviewData = await fetch(`/getRatings/${simID}/pos`);
+  let simreviewData2 = await fetch(`/getRatings/${simID}/neg`);
+  let simreviewResponse = await simreviewData.json();
+  let simreviewResponse2 = await simreviewData2.json();
+
+  simreviewResponse = simreviewResponse.concat(simreviewResponse2);
+
+  var simrating = avgRating(simreviewResponse);
+  var simroundedRating = rounding(simrating);
+
+  var name = document.createElement('H2');
+  name.innerText = simData['Name'];
+  document.querySelector('#similar').appendChild(name);
+  let simDes = document.createElement('P');
+
+  if (simroundedRating >= 75) {
+    simDes.innerText = `${simData['Name']} is doing fine so you should be okay`;
+  } else if (simroundedRating >= 50 && simroundedRating <= 74) {
+    simDes.innerText = `${simData['Name']} could be doing better. Might want to look at what you could be doing beter too.`;
+  } else {
+    simDes.innerText = `${simData['Name']} is not doing well. Might want to improve yourself as well.`;
+  }
+  document.querySelector('#similar').appendChild(simDes);
 };
 
 function getUrlVars() {
@@ -129,18 +166,17 @@ function tfidf(reviewResponse) {
   Object.keys(words).forEach(function(key) {
     objs.push({ word: key, size: words[key] });
   });
-  console.log(objs);
   return objs;
 }
 
-function createCloud(myWords) {
+function createCloud(myWords, divName) {
   // set the dimensions and margins of the graph
   var margin = { top: 10, right: 10, bottom: 10, left: 10 },
     width = 450 - margin.left - margin.right,
     height = 450 - margin.top - margin.bottom;
 
   var svg = d3
-    .select('#cloud')
+    .select('#' + divName)
     .append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)

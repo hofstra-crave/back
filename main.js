@@ -39,12 +39,28 @@ router.get('/getRestaurant/:id', async (context, next) => {
   }
 });
 
-router.get('/getRatings/:id', async (context, next) => {
+router.get('/getRatings/:id/:sent', async (context, next) => {
   let conn;
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT * FROM Reviews WHERE Restaurant_ID = ${context.params.id}`
+      `SELECT * FROM Reviews WHERE Restaurant_ID = ${context.params.id} AND Sentiment = "${context.params.sent}"`
+    );
+    const data = await response;
+    context.response.body = data;
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
+});
+
+router.get('/getRestaurantByID/:id', async (context, next) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const response = await conn.query(
+      `SELECT * FROM Restaurants WHERE ID = "${context.params.id}"`
     );
     const data = await response;
     context.response.body = data;
