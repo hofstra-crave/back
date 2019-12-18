@@ -1,0 +1,99 @@
+body {
+    background-color: #343434;
+}
+
+.jumbotron {
+    background-image: linear-gradient(to top right, #131313, #292929);
+    color: #C6C6C6;
+}
+
+.jumbotron h1{
+    color: #CE961F;
+}
+
+div.a{
+    padding: 5em;
+}
+
+form{
+    width: 50%;
+    margin: auto;
+    padding: 5%;
+}
+
+input.search-bar{
+    border-radius: 15px;
+    width: 75%;
+    height: 3em;
+    font-size: 1.2em;
+}
+
+input.search-button{
+    border-radius: 15px;
+    border: none;
+    width: 20%;
+    height: 3em;
+    font-size: 1.2em;
+    -webkit-transition: all 0.2s linear;
+       -moz-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+         -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+}
+
+input.search-button:hover{
+    background-color: #CE961F;
+    color: #eee;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(to top right, #232323, #131313);
+    color: #C6C6C6;
+    font-size: 1.2em;
+    padding: 2em;
+    text-align: center;
+    height: 5em;
+}
+
+/* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+  /* Style the icon bar links */
+  .icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
+  }
+  
+  /* Social Media Styles Icons */
+  .icon-bar a:hover {
+    background-color: #000;
+  }
+  
+  .facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  .twitter {
+    background: #55ACEE;
+    color: white;
+  }
+  
+  .linkedin {
+    background: #007bb5;
+    color: white;
+  }

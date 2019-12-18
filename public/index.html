@@ -8,16 +8,24 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
 
+  <div class="icon-bar">
+    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+    <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+  </div>
+
   <div class="jumbotron text-center" style="margin-bottom:0">
     <h1>
-      <font color="blue">Review Manager</font>
+      Review Manager
     </h1>
     <p>
-      <font color="light blue">Get started now and find your restaurant!</font>
+      Get started now and find your restaurant!
     </p>
   </div>
 
@@ -26,14 +34,18 @@
       would like or how their experience can be best catered is a challenging task. If done poorly, could leave the
       patron with an inadequate experience; and you, with a scathing review. Can technology help? </h3> -->
 
-    <div>
+    <search-bar>
       <form action="/getRestaurant.html" method="GET">
-        <input type="text" placeholder="Enter a restaurant name" name="restaurant"> <input type="submit">
+        <input class="search-bar" type="text" placeholder="Enter a restaurant name..." name="restaurant"> <input
+          class="search-button" type="submit">
       </form>
-    </div>
+    </search-bar>
 
     <!-- <img src="restaurant.jpg" alt="restaurant" align="middle" style="width:50%;"> -->
 
+    <footer>
+      © Team Crave
+    </footer>
 </body>
 
 </html>

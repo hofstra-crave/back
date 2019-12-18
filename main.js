@@ -28,7 +28,7 @@ router.get('/getRestaurant/:id', async (context, next) => {
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT * FROM Restaurants WHERE Name = "${context.params.id}" `
+      `SELECT * FROM Restaurantz WHERE Name = "${context.params.id}" `
     );
     const data = await response[0];
     context.response.body = data;
@@ -44,7 +44,7 @@ router.get('/getRatings/:id/:sent', async (context, next) => {
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT * FROM Reviews WHERE Restaurant_ID = ${context.params.id} AND Sentiment = "${context.params.sent}"`
+      `SELECT * FROM Reviewz WHERE Restaurant_ID = ${context.params.id} AND Sentiment = "${context.params.sent}"`
     );
     const data = await response;
     context.response.body = data;
@@ -60,7 +60,7 @@ router.get('/getRestaurantByID/:id', async (context, next) => {
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT * FROM Restaurants WHERE ID = "${context.params.id}"`
+      `SELECT * FROM Restaurantz WHERE Restaurant_ID = "${context.params.id}"`
     );
     const data = await response;
     context.response.body = data;
@@ -74,12 +74,12 @@ router.get('/getRestaurantByID/:id', async (context, next) => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-// app.listen(3003, () => {
-//   console.log('Server running on port 3003');
-// });
-
-const httpServer = http.createServer(app.callback());
-
-httpServer.listen(80, () => {
-  console.log('HTTP Server running on port 80');
+app.listen(3003, () => {
+  console.log('Server running on port 3003');
 });
+
+// const httpServer = http.createServer(app.callback());
+
+// httpServer.listen(80, () => {
+//   console.log('HTTP Server running on port 80');
+// });
