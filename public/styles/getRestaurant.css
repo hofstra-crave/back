@@ -1,5 +1,13 @@
+body h1{
+  color: #CE961F;
+}
+
+body h3{
+  color: #CE961F;
+}
+
 .checked {
-  color: orange;
+  color: #CE961F;
 }
 
 img {

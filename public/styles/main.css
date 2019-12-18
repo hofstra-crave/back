@@ -46,7 +46,11 @@ footer {
   
 /* Social Media Styles Icons */
 .icon-bar a:hover {
-    background-color: #000;
+    background-color: #CE961F;
+}
+
+.back {
+    background: #131313;
 }
   
 .facebook {
