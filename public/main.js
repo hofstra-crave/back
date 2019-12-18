@@ -61,6 +61,7 @@ let setUp = async () => {
   let simRes = await fetch(`/getRestaurantByID/${simID}`);
   let simRes2 = await simRes.json();
   let simData = simRes2[0];
+  console.log(simData);
 
   //get reviews for the restaurant
   let simreviewData = await fetch(`/getRatingsBySimID/${simID}/pos`);
