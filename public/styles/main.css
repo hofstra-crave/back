@@ -1,32 +1,65 @@
-.checked {
-  color: orange;
+body {
+    background-color: #343434;
+    color: #eee;
 }
 
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.jumbotron {
+    background-image: linear-gradient(to top right, #131313, #292929);
+    color: #C6C6C6;
 }
 
-div.a {
-  text-indent: 50px;
+.jumbotron h1{
+    color: #CE961F;
 }
 
-.fakeimg {
-  height: 200px;
-  background: #aaa;
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(to top right, #232323, #131313);
+    color: #C6C6C6;
+    font-size: 1.2em;
+    padding: 2em;
+    text-align: center;
+    height: 5em;
 }
 
-.chartContainer,
-.cloud {
-  margin: 20%;
+/* Fixed/sticky icon bar (vertically aligned 50% from the top of the screen) */
+.icon-bar {
+    position: fixed;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  
+/* Style the icon bar links */
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 16px;
+    transition: all 0.3s ease;
+    color: white;
+    font-size: 20px;
 }
-
-.chartContainer {
-  height: 300px;
-  width: 100%;
+  
+/* Social Media Styles Icons */
+.icon-bar a:hover {
+    background-color: #000;
 }
-
-.star-rating {
-  font-size: 20px;
+  
+.facebook {
+    background: #3B5998;
+    color: white;
+}
+  
+.twitter {
+    background: #55ACEE;
+    color: white;
+}
+  
+.linkedin {
+    background: #007bb5;
+    color: white;
 }
