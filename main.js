@@ -44,7 +44,7 @@ router.get('/getRatings/:id/:sent', async (context, next) => {
   try {
     conn = await pool.getConnection();
     const response = await conn.query(
-      `SELECT * FROM Reviewz WHERE Restaurant_ID = ${context.params.id} AND Sentiment = "${context.params.sent}"`
+      `SELECT * FROM Reviewz WHERE Restaurant_ID = ${context.params.id} AND sentiment = "${context.params.sent}"`
     );
     const data = await response;
     context.response.body = data;
@@ -61,6 +61,22 @@ router.get('/getRestaurantByID/:id', async (context, next) => {
     conn = await pool.getConnection();
     const response = await conn.query(
       `SELECT * FROM Restaurantz WHERE Restaurant_ID = "${context.params.id}"`
+    );
+    const data = await response;
+    context.response.body = data;
+  } catch (err) {
+    throw err;
+  } finally {
+    if (conn) conn.end();
+  }
+});
+
+router.get('/getRatingsBySimID/:id/:sent', async (context, next) => {
+  let conn;
+  try {
+    conn = await pool.getConnection();
+    const response = await conn.query(
+      `SELECT * FROM Reviewz WHERE Restaurant_ID = "${context.params.id}" AND sentiment = "${context.params.sent}"`
     );
     const data = await response;
     context.response.body = data;

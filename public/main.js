@@ -63,8 +63,8 @@ let setUp = async () => {
   let simData = simRes2[0];
 
   //get reviews for the restaurant
-  let simreviewData = await fetch(`/getRatings/${simID}/pos`);
-  let simreviewData2 = await fetch(`/getRatings/${simID}/neg`);
+  let simreviewData = await fetch(`/getRatingsBySimID/${simID}/pos`);
+  let simreviewData2 = await fetch(`/getRatingsBySimID/${simID}/neg`);
   let simreviewResponse = await simreviewData.json();
   let simreviewResponse2 = await simreviewData2.json();
 
@@ -90,7 +90,7 @@ let setUp = async () => {
 
 function getUrlVars() {
   var vars = {};
-  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(
     m,
     key,
     value
@@ -163,7 +163,7 @@ function tfidf(reviewResponse) {
   });
 
   var objs = [];
-  Object.keys(words).forEach(function (key) {
+  Object.keys(words).forEach(function(key) {
     objs.push({ word: key, size: words[key] });
   });
   return objs;
@@ -189,15 +189,15 @@ function createCloud(myWords, divName) {
     .cloud()
     .size([width, height])
     .words(
-      myWords.map(function (d) {
+      myWords.map(function(d) {
         return { text: d.word, size: d.size * 20 };
       })
     )
     .padding(5) //space between words
-    .rotate(function () {
+    .rotate(function() {
       return ~~(Math.random() * 2) * 90;
     })
-    .fontSize(function (d) {
+    .fontSize(function(d) {
       return d.size;
     }) // font size of words
     .on('end', draw);
@@ -216,7 +216,7 @@ function createCloud(myWords, divName) {
       .data(words)
       .enter()
       .append('text')
-      .style('font-size', function (d) {
+      .style('font-size', function(d) {
         return d.size;
       })
       .style('stroke', '#131313')
@@ -224,10 +224,10 @@ function createCloud(myWords, divName) {
       .style('fill', '#eee')
       .attr('text-anchor', 'middle')
       .style('font-family', 'Impact')
-      .attr('transform', function (d) {
+      .attr('transform', function(d) {
         return 'translate(' + [d.x, d.y] + ')rotate(' + d.rotate + ')';
       })
-      .text(function (d) {
+      .text(function(d) {
         return d.text;
       });
   }
